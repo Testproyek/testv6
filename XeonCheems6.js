@@ -1866,7 +1866,7 @@ break
 	    }
 	    break
 	case 'emojimix2': {
-	    if (!text) throw `Example : ${prefix + command} ðŸ˜…`
+	    if (!text) throw `Example : ${prefix + command} 😅+🤔`
 		let anumix2 = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(text)}`)
 		for (let res of anumix2.results) {
 		    let encmedia = await XeonBotInc.sendImageAsSticker(m.chat, res.url, m, { packname: global.packname, author: global.author, categories: res.tags })
@@ -1874,7 +1874,7 @@ break
 		}
 	    }
 	    break
-         case 'tts': {
+         case 'tts': case 'say':{
          	if (!text) throw `Example : ${prefix + command} text`
              let tts = await fetchJson(`https://api.akuari.my.id/texttovoice/texttosound_english?query=${text}`)
              XeonBotInc.sendMessage(m.chat, { audio: { url: tts.result }, mimetype: 'audio/mp4', ptt: true, fileName: `${text}.mp3` }, { quoted: m })
@@ -4298,13 +4298,13 @@ case 'dare':
     "What five items would you bring if you got stuck on a desert island",
     "Have you ever laughed so hard you peed your pants",
     "Do you smell your own farts",
-    "have u ever peed on the bed while sleeping ðŸ¤£ðŸ¤£",
+    "have u ever peed on the bed while sleeping ??",
     "What is the biggest mistake you have ever made",
     "Have you ever cheated in an exam",
     "What is the worst thing you have ever done",
     "When was the last time you cried",
     "whom do you love the most among ur parents", 
-    "do u sometimes put ur finger in ur nosetrilðŸ¤£", 
+    "do u sometimes put ur finger in ur nosetril?", 
     "who was ur crush during the school days",
     "tell honestly, do u like any boy in this grup",
     "have you ever liked anyone? how long?",
@@ -4326,7 +4326,7 @@ case 'dare':
     "Mention the incident that makes you hurt that you still remember",
     "what achievements have you got this year?",
     "what was your worst habit at school?",
-    "do you love the bot creator, xeon?ðŸ¦„",
+    "do you love the bot creator, xeon?🤣",
     "have you ever thought of taking revenge from ur teacher?",
     "do you like current prime minister of ur country",
     "you non veg or veg",
@@ -5853,7 +5853,7 @@ case 'where': {
             break
 case 'how': {
             	if (!text) throw `Ask question\n\nExample : ${prefix + command} to date girl?`
-            	let gimana = [`Ummm...`, `It's Difficult Bro`, `Sorry Bot Can't Answer`, `Try Searching On Google`,`Holy Cow! Really???`,`Dizzy AhðŸ˜®â€ðŸ’¨, don't wanna answer`,`Ohhh I See:(`,`The Patient, Boss:(`,`Really dude ðŸ˜?`]
+            	let gimana = [`Ummm...`, `It's Difficult Bro`, `Sorry Bot Can't Answer`, `Try Searching On Google`,`Holy Cow! Really???`,`Dizzy Ah😴, don't wanna answer`,`Ohhh I See:(`,`The Patient, Boss:(`,`Really dude 🙄`]
                 let kah = gimana[Math.floor(Math.random() * gimana.length)]
                 let jawab = `*How ${text}*\nAnswer : ${kah}`
                 let buttons = [{ buttonId: 'hehehe', buttonText: { displayText: 'HAHAHA' }, type: 1 }]
@@ -6000,7 +6000,7 @@ XeonBotInc.sendMessage(from, { text: `*${command}*\n\nName : ${q}\nAnswer : *${s
             let jawab = `The Most *${command}* Here Is @${jodoh.split('@')[0]}`
             let ments = [me, jodoh]
             let buttons = [
-                        { buttonId: 'ðŸ‘€', buttonText: { displayText: '🤣' }, type: 1 }
+                        { buttonId: 'oke', buttonText: { displayText: '🤣' }, type: 1 }
                     ]
                     await XeonBotInc.sendButtonText(m.chat, buttons, jawab, botname, m, {mentions: ments})
             }
@@ -7741,6 +7741,7 @@ const buttonMessage = {
 ╠${prefix}yuri
 ╠${prefix}zettai
 ╠═══════✪ FUN 
+╠ ${prefix}say [text]
 ╠ ${prefix}define [text]
 ╠ ${prefix}how [text
 ╠ ${prefix}when [text]
@@ -8685,7 +8686,8 @@ const buttons = [
 ]
 const buttonMessage = {
     image: unicorn,
-    caption: `╔═══════✪ Fun 	
+    caption: `╔═══════✪ Fun 
+╠ ${prefix}say [text]	
 ╠ ${prefix}define [text]
 ╠ ${prefix}how [text]
 ╠ ${prefix}when [text]
